@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Phone;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PhoneController;
@@ -17,7 +18,7 @@ use App\Http\Controllers\PhoneController;
 Route::resource('/contact', PhoneController::class);
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $phones = Phone::all();
+    return view('phones.index')->with('phone', $phones);});
 
 Route::resource("/phones",PhoneController::class);
